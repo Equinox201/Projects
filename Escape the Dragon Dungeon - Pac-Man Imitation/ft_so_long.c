@@ -23,7 +23,7 @@ char	*ft_mem_alloc_fill(int nb, int size)
 
 int	ft_valid_symbol(char c)
 {
-	if (c != 'C' && c != '0' & c != '1' & c != 'E' & c != 'P')
+	if (c != 'C' && c != '0' && c != '1' && c != 'E' && c != 'P')
 		return (1);
 	return (0);
 }

@@ -56,9 +56,14 @@ Run bonus build:
 ./cub3D_bonus maps/Bonus_map1.cub
 ```
 
-## Controls (Typical)
-- `W/A/S/D`: move
-- arrow keys (and mouse in bonus): rotate camera
+## Controls
+- W: move forward
+- S: move backward
+- A: strafe left
+- D: strafe right
+- left arrow: rotate left
+- right arrow: rotate right
+- mouse: rotate by moving the mouse (bonus only)
 - `ESC`: exit
 
 ## Notes

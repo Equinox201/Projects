@@ -26,7 +26,10 @@ Run with a map file:
 ```
 
 ## Controls
-- `W/A/S/D` or arrow keys: move
+- W: move up
+- S: move down
+- A: move left
+- D: move right
 - `ESC`: quit
 
 ## Notes

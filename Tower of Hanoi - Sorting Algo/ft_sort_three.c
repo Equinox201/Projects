@@ -4,9 +4,6 @@
 void	ft_push_all_save_three(t_stk **a_stack, t_stk **b_stack)
 {
 	t_stk	*current;
-	int		iter;
-
-	iter = 1;
 	while (ft_lstsize(*a_stack) > 3)
 	{
 		current = *a_stack;
@@ -28,10 +25,8 @@ void	ft_optimized_push(t_stk **a_stack, t_stk **b_stack)
 {
 	t_stk	*a_trg;
 	t_stk	*b_trg;
-	int		com;
 
 	a_trg = ft_cost_com_ratio(a_stack);
-	com = a_trg->t_com;
 	if (a_trg->trgt == -1 && a_trg->sorted != 1)
 		a_trg->trgt = ft_high(b_stack);
 	b_trg = ft_find_target(b_stack, a_trg->trgt);
