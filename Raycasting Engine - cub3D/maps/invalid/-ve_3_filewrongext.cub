@@ -1,0 +1,9 @@
+NO textures/wet_sponge.xpm
+SO ./Makefile
+WE textures/wet_sponge.xpm
+EA textures/wet_sponge.xpm
+
+F 255, 255, 0
+C 0, 42, 55
+
+ 11 111  11 111 1 1 11

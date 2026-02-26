@@ -1,0 +1,71 @@
+#include "cub3D_bonus.h"
+
+char	*ft_dup_or_join(char *s1, char *s2)
+{
+	if (!s2)
+		return (ft_strdup(s1));
+	if (!s1)
+		return (ft_strdup(s2));
+	else
+		return (ft_strjoin(s1, s2));
+}
+
+char	*ft_add_quotes(char *final, char *dtl)
+{
+	char	*temp;
+
+	temp = ft_dup_or_join(final, "'");
+	ft_safe_ptr(final);
+	final = temp;
+	temp = ft_dup_or_join(final, dtl);
+	ft_safe_ptr(final);
+	final = temp;
+	temp = ft_dup_or_join(final, "'");
+	ft_safe_ptr(final);
+	final = temp;
+	return (final);
+}
+
+void	ft_correct_form(int err_code)
+{
+	if (err_code == 2)
+		printf("Correct Usage: \'./cub3D maps.cub\'\n");
+	if (err_code == 3)
+		printf("Correct Usage: \'[NO,SO,WE,EA] ./path_to_texture.xpm\'\n");
+	if (err_code == 4)
+	{
+		printf("Textures & Colour Correct Usage\n");
+		printf("4 unique directional textures & 2 RGB colours\n");
+		printf("Each element must begin with its type identifier\n");
+		printf("Colour format:  \'[C,F] R,G,B\' colors in range [0-255]\n");
+		printf("Texture format: \'[NO,SO,WE,EA] ./path_to_texture.xpm\'\n");
+	}
+	if (err_code == 5)
+	{
+		printf("Map Correct Usage\n");
+		printf("Map must be surrounded by walls\n");
+		printf("The map can have only 6 characters:\n");
+		printf("  - 0 for an empty space\n");
+		printf("  - 1 for a wall\n");
+		printf("  - N,S,E or W player start position/orientation\n");
+	}
+	return ;
+}
+
+int	ft_error_msg(char *cmd, char *msg, int err_code)
+{
+	char	*final;
+
+	printf("Error\n");
+	if (msg)
+	{
+		final = ft_dup_or_join(cmd, ": ");
+		final = ft_add_quotes(final, msg);
+	}
+	else
+		final = ft_strdup(cmd);
+	printf("Cub3D: %s\n", final);
+	ft_safe_ptr(final);
+	ft_correct_form(err_code);
+	return (FAIL);
+}

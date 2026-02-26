@@ -1,0 +1,26 @@
+#include "cub3D_bonus.h"
+
+int	ft_interact_door(t_data *data)
+{
+	t_door	*door;
+	int		target_x;
+	int		target_y;
+
+	target_x = (int)(data->play.pos.x + data->play.dir_x * 0.8);
+	target_y = (int)(data->play.pos.y + data->play.dir_y * 0.8);
+	door = ft_find_door(data, target_x, target_y);
+	if (!door)
+		door = ft_find_door(data, (int)data->play.pos.x, (int)data->play.pos.y);
+	if (!door)
+		return (0);
+	return (ft_toggle_door_state(data, door));
+}
+
+void	ft_free_doors(t_data *data)
+{
+	if (!data)
+		return ;
+	data->door_cap = 0;
+	data->door_count = 0;
+	free(data->doors);
+}

@@ -1,0 +1,54 @@
+name: Compile Check
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: so_long
+            dir: "Escape the Dragon Dungeon - Pac-Man Imitation"
+          - project: pipex
+            dir: "Multi-processing - Piping Problem"
+          - project: philosophers
+            dir: "Multi-threading - Dining Philosophers Problem"
+          - project: push_swap
+            dir: "Tower of Hanoi - Sorting Algo"
+          - project: cub3D
+            dir: "Raycasting Engine - cub3D"
+          - project: minishell
+            dir: "Unix Command Shell - Minishell"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libx11-dev \
+            libxext-dev \
+            libbsd-dev \
+            zlib1g-dev \
+            libreadline-dev
+
+      - name: Compile ${{ matrix.project }}
+        run: |
+          set -e
+          make -C "${{ matrix.dir }}"
+
+      - name: Clean artifacts
+        if: always()
+        run: |
+          make -C "${{ matrix.dir }}" fclean || true

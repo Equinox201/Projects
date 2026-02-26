@@ -1,0 +1,13 @@
+NO ./textures/walls/Brick.xpm
+SO ./textures/walls/Metal.xpm
+WE ./textures/walls/Stone.xpm
+EA ./textures/walls/Wood.xpm
+
+F 255,52,0
+
+C 0,42,255
+
+G g
+
+
+ 11 111  11 111 1 1 11
